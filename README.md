@@ -14,8 +14,6 @@
 - Full AI API deployment and Azure integration are in progress as of April 4.
 - OpenAI-based chatbot features are actively considered for future expansion.
 
-*(Related Image: Azure AI Studio-based deployment plan, IoT-AI integration flow, and automated Ring-LED control examples are attached.)*
-
 ---
 
 ### Detailed Context
