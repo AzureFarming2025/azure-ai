@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 
 Smart Agriculture IoT System
@@ -107,3 +108,5 @@ Optimize power management for long-term deployment.
 Improve AI model accuracy with more training data.
 
 Add automated anomaly detection for better system performance.
+=======
+>>>>>>> Stashed changes
