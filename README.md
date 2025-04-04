@@ -1,177 +1,109 @@
-Smart Agriculture IoT System with Machine Learning
 
-Overview
 
-This project implements a Smart Agriculture IoT System using an ESP32 microcontroller, various sensors, and Machine Learning (Random Forest Regression) to predict soil moisture levels. The system also integrates with Microsoft Azure for cloud-based data processing and visualization.
+Smart Agriculture IoT System
+
+Project Overview
+
+This project is a Smart Agriculture IoT System designed to monitor and optimize farming conditions using ESP32 and various sensors. The system collects real-time environmental data, processes it, and predicts soil moisture levels using Machine Learning (Random Forest Model) deployed on Azure.
 
 Features
 
-Real-time monitoring of temperature, humidity, sunlight, and soil moisture.
+Real-time Data Collection: Temperature, humidity, sunlight, and soil moisture sensors integrated with ESP32.
 
-Automated decision-making for irrigation using ML models.
+AI-based Predictions: Machine learning model predicts soil moisture to optimize irrigation.
 
-Wireless data transmission via MQTT and HTTP API.
+Cloud Integration: Sensor data sent to Microsoft Azure for AI processing.
 
-Custom web dashboard for sensor data visualization.
+Custom Web Dashboard: Displays real-time sensor readings and AI predictions.
 
-Local and cloud-based AI models for predictive analytics.
+MQTT & HTTP API: Communication between ESP32, cloud, and web dashboard.
 
 
+My Contributions (Peegan Dourado)
 
----
+I was responsible for the following tasks in this project:
 
-Hardware Components
+Electronics & Hardware Integration
 
-ESP32 microcontroller
+Connected and tested temperature, humidity, sunlight, and soil moisture sensors with ESP32.
 
-Temperature & Humidity Sensor (DHT11/DHT22)
+Configured OLED display (SSD1306) via I2C for real-time sensor data display.
 
-Soil Moisture Sensor
+Integrated relay module for automated irrigation control.
 
-Sunlight Sensor
+Ensured stable power supply and wiring for all components.
 
-OLED Display (SSD1306) - I2C Interface
 
-Relay Module (for controlling water pump)
+Machine Learning Model
 
-Power Supply (5V/12V as required)
+Developed Random Forest Model to predict soil moisture based on sensor data.
 
-Jumper Wires & Breadboard
+Preprocessed data and trained the model using Python (pandas, scikit-learn).
 
+Evaluated model accuracy and optimized hyperparameters.
 
 
----
+Azure Cloud Integration
 
-Software & Libraries
+Configured Microsoft Azure to process AI tasks remotely (ESP32 does not run AI locally).
 
-Arduino IDE for ESP32 programming
+Deployed the machine learning model in the cloud and integrated it with the system.
 
-VS Code for Python ML development
 
-Python Libraries: Pandas, NumPy, Matplotlib, Scikit-learn
+Web Dashboard & API Integration
 
-IoT Communication: MQTT, HTTP API
+Implemented MQTT & HTTP API for data transmission between ESP32 and the dashboard.
 
-Azure IoT Hub for cloud integration
+Developed a custom dashboard to visualize sensor readings and AI predictions.
 
 
 
----
+How to Set Up the System
 
-Circuit Connections
+1. Hardware Setup
 
-DHT Sensor: Data pin to GPIO
+1. Connect temperature, humidity, sunlight, and soil moisture sensors to ESP32.
 
-Soil Moisture Sensor: Analog output to ADC pin
 
-Sunlight Sensor: Analog output to ADC pin
+2. Connect OLED display via I2C and relay module for irrigation control.
 
-OLED Display (SSD1306): SDA to GPIO21, SCL to GPIO22
 
-Relay Module: IN pin to GPIO
+3. Power the ESP32 with a stable external power source.
 
 
 
----
+2. Software & AI Model
 
-Machine Learning Model (Random Forest Regression)
+1. Install required Python libraries:
 
-Steps:
+pip install pandas numpy scikit-learn matplotlib paho-mqtt
 
-1. Collect Sensor Data and save it as a CSV file.
 
+2. Train the Random Forest Model:
 
-2. Preprocess Data: Normalize values using MinMaxScaler.
+python train_rf.py
 
 
-3. Train Model: Random Forest Regressor to predict soil moisture.
+3. Deploy the model on Microsoft Azure.
 
 
-4. Evaluate Model: Calculate Mean Absolute Error (MAE) and Mean Squared Error (MSE).
 
+3. IoT & Cloud Communication
 
-5. Deploy Model: Use the trained model in the ESP32 system for real-time predictions.
+1. Upload ESP32 firmware to send sensor data via MQTT & HTTP API.
 
 
+2. Configure Azure to receive data, run predictions, and send results back.
 
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-# Train Model
-model = RandomForestRegressor(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
+3. Use the web dashboard to monitor live sensor readings and AI predictions.
 
-# Evaluate Model
-predictions = model.predict(X_test)
-mae = mean_absolute_error(y_test, predictions)
-mse = mean_squared_error(y_test, predictions)
-print(f"MAE: {mae}, MSE: {mse}")
 
 
----
+Future Improvements
 
-IoT Integration
+Optimize power management for long-term deployment.
 
-MQTT Protocol: Used for sending real-time sensor data to the cloud.
+Improve AI model accuracy with more training data.
 
-HTTP API: Allows external applications to request sensor data.
-
-Azure Integration: Data stored in Azure IoT Hub for analysis and dashboard visualization.
-
-
-
----
-
-Deployment
-
-Running the ML Model in VS Code:
-
-1. Install dependencies: pip install pandas numpy scikit-learn matplotlib
-
-
-2. Run the script: python train_rf.py
-
-
-
-Flashing ESP32 Code:
-
-1. Open the ESP32 Arduino Code in Arduino IDE.
-
-
-2. Select ESP32 Board and correct COM Port.
-
-
-3. Upload the code.
-
-
-
-Running the Web Dashboard:
-
-1. Start the MQTT broker.
-
-
-2. Run the Python Flask/Node.js server.
-
-
-3. Open the dashboard in a browser.
-
-
-
-
----
-
-Future Enhancements
-
-AI-based Anomaly Detection using deep learning.
-
-Camera Integration for plant health monitoring.
-
-Edge AI Optimization for ESP32 inference.
-
-
-
----
-
-Author & Credits
-
-Developed by Peegan Dourado. Contributions are welcome!
+Add automated anomaly detection for better system performance.
